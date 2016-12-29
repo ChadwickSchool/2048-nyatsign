@@ -12,6 +12,7 @@ var tileY;
 var totalTileNumber;
 var score = 0;
 
+
 //As soon as webpage loads run these two functions
 /*$(document).ready(function(){
     setUpBoard();
@@ -129,7 +130,7 @@ function combineTilesUp()
         {
    if(r !== 0 && board[r][c] !== "x" && board[r-1][c] !== "x" && board[r][c] === board[r-1][c]){
             totalTileNumber = parseInt(board[r-1][c]) + parseInt(board[r][c]);
-            score = score + 
+            score = score + parseInt(board[r-1][c]) + parseInt(board[r][c]);
             console.log(totalTileNumber);
 
             board[r-1][c] = board[r][c];
@@ -177,7 +178,7 @@ function combineTilesDown(){
     if(r !== 3 && board[r][c] !== "x" && board[r+1][c] !== "x" && board[r][c] === board[r+1][c]){
             totalTileNumber = parseInt(board[r+1][c]) + parseInt(board[r][c]);
             console.log(totalTileNumber);
-
+            score = score + parseInt(board[r+1][c]) + parseInt(board[r][c]);
             board[r+1][c] = board[r][c];
 
             board[r+1][c] = totalTileNumber;
@@ -224,7 +225,7 @@ function moveTilesDown()
          if(c !== 3 && board[r][c] !== "x" && board[r][c+1] !== "x" && board[r][c] === board[r][c+1]){
             totalTileNumber = parseInt(board[r][c+1]) + parseInt(board[r][c]);
             console.log(totalTileNumber);
-
+            score = score + parseInt(board[r][c+1]) + parseInt(board[r][c]);
             board[r][c+1] = board[r][c];
 
             board[r][c+1] = totalTileNumber;
@@ -268,7 +269,7 @@ function combineTilesLeft(){
      if(c !== 0 && board[r][c] !== "x" && board[r][c-1] !== "x" && board[r][c] === board[r][c-1]){
             totalTileNumber = parseInt(board[r][c-1]) + parseInt(board[r][c]);
             console.log(totalTileNumber);
-
+            score = score + parseInt(board[r][c-1]) + parseInt(board[r][c]);
             board[r][c-1] = board[r][c];
 
             board[r][c-1] = totalTileNumber;
@@ -310,6 +311,8 @@ function moveTilesLeft()
 
 function printBoard(){
 console.log(score);
+//document.getElementById('score').innerHTML = "Score: " + score;
+
 	for(var i = 0; i < 4; i++){
 		for(var j = 0; j < 4; j++){
 			var boardID = "r"+i+"c"+j;
