@@ -159,6 +159,7 @@ function moveTilesUp()
             {
                 board[r-1][c] = board[r][c];
                 board[r][c] = "x";
+                moveTilesUp();
            //     console.log(r);
                //console.log(board.length);
             }
@@ -209,6 +210,7 @@ function moveTilesDown()
                
                 board[r+1][c] = board[r][c];
                 board[r][c] = "x";
+                moveTilesDown();
             //   console.log(r);
                 
                  }
@@ -252,6 +254,8 @@ function moveTilesRight()
             {
                 board[r][c+1] = board[r][c];
                 board[r][c] = "x";
+                moveTilesRight();
+              //  moveTilesRight();
          //       console.log(c);
                //console.log(board.length);
             }
@@ -295,6 +299,7 @@ function moveTilesLeft()
             {
                 board[r][c-1] = board[r][c];
                 board[r][c] = "x";
+                moveTilesLeft();
            //     console.log(c);
                //console.log(board.length);
             }
@@ -312,7 +317,7 @@ function moveTilesLeft()
 function printBoard(){
 console.log(score);
 //document.getElementById('score').innerHTML = "Score: " + score;
-
+//text(score,10,10);
 	for(var i = 0; i < 4; i++){
 		for(var j = 0; j < 4; j++){
 			var boardID = "r"+i+"c"+j;
