@@ -11,8 +11,8 @@ var tileX;
 var tileY;
 var totalTileNumber;
 var score = 0;
-
-
+var cleared = false;
+var foreverContinue = false;
 //As soon as webpage loads run these two functions
 /*$(document).ready(function(){
     setUpBoard();
@@ -117,6 +117,11 @@ document.onkeydown = function(e) {
 
     //   console.log(board.length);
     } 
+    if(cleared == true){
+    	document.getElementById("clear").innerHTML = "You have cleared the game! Click OK and refresh the page if you want to play again";
+    	alert(document.getElementById("clear").innerHTML);
+    	foreverContinue = true;
+    }
   //  if()
     
     printBoard(); //have to recall print board to get the board to update
@@ -131,6 +136,10 @@ function combineTilesUp()
    if(r !== 0 && board[r][c] !== "x" && board[r-1][c] !== "x" && board[r][c] === board[r-1][c]){
             totalTileNumber = parseInt(board[r-1][c]) + parseInt(board[r][c]);
             score = score + parseInt(board[r-1][c]) + parseInt(board[r][c]);
+            if(parseInt(board[r-1][c]) + parseInt(board[r][c]) === 2048 && foreverContinue == false){
+            	cleared = true;
+            	
+            }
             console.log(totalTileNumber);
 
             board[r-1][c] = board[r][c];
@@ -316,6 +325,8 @@ function moveTilesLeft()
 
 function printBoard(){
 console.log(score);
+document.getElementById("demo").innerHTML = "Score: " + score;
+document.getElementById("demo").style.background = "#17202A";
 //document.getElementById('score').innerHTML = "Score: " + score;
 //text(score,10,10);
 	for(var i = 0; i < 4; i++){
@@ -323,8 +334,7 @@ console.log(score);
 			var boardID = "r"+i+"c"+j;
 			//if the tile is not zero, put it on the board 
 			if(board[i][j]!=0){
-				document.getElementById(boardID).innerHTML = board[i][j];
-			}
+				document.getElementById(boardID).innerHTML = board[i][j];			}
 			//Change the different number tiles to different colors
 			switch(board[i][j]){
 				case "x":
