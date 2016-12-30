@@ -30,7 +30,7 @@ function setUpBoard(){
     for(var i=0; i<4; i++){
         var innerboard = [];
         for(var j=0; j<4; j++){
-            innerboard.push("x");
+            innerboard.push(0);
         }
         board.push(innerboard);
     }
@@ -45,7 +45,7 @@ function addTile() {
     var x = Math.round(Math.random()*3);
     var y = Math.round(Math.random()*3);
     
-    while(board[x][y] !== "x"){
+    while(board[x][y] !== 0){
 var x = Math.round(Math.random()*3);
     var y = Math.round(Math.random()*3);
     }
@@ -121,6 +121,7 @@ document.onkeydown = function(e) {
     	document.getElementById("clear").innerHTML = "You have cleared the game! Click OK and refresh the page if you want to play again";
     	alert(document.getElementById("clear").innerHTML);
     	foreverContinue = true;
+    	cleared = false;
     }
   //  if()
     
@@ -133,7 +134,7 @@ function combineTilesUp()
     {
         for(var c=0; c<board[r].length; c++)
         {
-   if(r !== 0 && board[r][c] !== "x" && board[r-1][c] !== "x" && board[r][c] === board[r-1][c]){
+   if(r !== 0 && board[r][c] !== 0 && board[r-1][c] !== 0 && board[r][c] === board[r-1][c]){
             totalTileNumber = parseInt(board[r-1][c]) + parseInt(board[r][c]);
             score = score + parseInt(board[r-1][c]) + parseInt(board[r][c]);
             if(parseInt(board[r-1][c]) + parseInt(board[r][c]) === 2048 && foreverContinue == false){
@@ -145,8 +146,8 @@ function combineTilesUp()
             board[r-1][c] = board[r][c];
 
             board[r-1][c] = totalTileNumber;
-            if(board[r][c] !== "x"){
-            board[r][c] = "x";
+            if(board[r][c] !== 0){
+            board[r][c] = 0;
         }
 
            // board[r-1][c] = totalTileNumber;
@@ -164,10 +165,10 @@ function moveTilesUp()
         for(var c=0; c<board[r].length; c++)
         {
            
-            if(r !== 0  && board[r][c] !== "x" && board[r-1][c] === "x")
+            if(r !== 0  && board[r][c] !== 0 && board[r-1][c] === 0)
             {
                 board[r-1][c] = board[r][c];
-                board[r][c] = "x";
+                board[r][c] = 0;
                 moveTilesUp();
            //     console.log(r);
                //console.log(board.length);
@@ -185,15 +186,15 @@ function combineTilesDown(){
 
         for(var c=0; c<board[r].length; c++)
         {
-    if(r !== 3 && board[r][c] !== "x" && board[r+1][c] !== "x" && board[r][c] === board[r+1][c]){
+    if(r !== 3 && board[r][c] !== 0 && board[r+1][c] !== 0 && board[r][c] === board[r+1][c]){
             totalTileNumber = parseInt(board[r+1][c]) + parseInt(board[r][c]);
             console.log(totalTileNumber);
             score = score + parseInt(board[r+1][c]) + parseInt(board[r][c]);
             board[r+1][c] = board[r][c];
 
             board[r+1][c] = totalTileNumber;
-            if(board[r][c] !== "x"){
-            board[r][c] = "x";
+            if(board[r][c] !== 0){
+            board[r][c] = 0;
         }
 }
 }
@@ -213,12 +214,12 @@ function moveTilesDown()
         {
 
 
-            if(r !== 3  && board[r][c] !== "x" && board[r+1][c] === "x")
+            if(r !== 3  && board[r][c] !== 0 && board[r+1][c] === 0)
             {
                // moveOnce = true;
                
                 board[r+1][c] = board[r][c];
-                board[r][c] = "x";
+                board[r][c] = 0;
                 moveTilesDown();
             //   console.log(r);
                 
@@ -233,15 +234,15 @@ function moveTilesDown()
     {
         for(var c=3; c >=0; c--)
         {
-         if(c !== 3 && board[r][c] !== "x" && board[r][c+1] !== "x" && board[r][c] === board[r][c+1]){
+         if(c !== 3 && board[r][c] !== 0 && board[r][c+1] !== 0 && board[r][c] === board[r][c+1]){
             totalTileNumber = parseInt(board[r][c+1]) + parseInt(board[r][c]);
             console.log(totalTileNumber);
             score = score + parseInt(board[r][c+1]) + parseInt(board[r][c]);
             board[r][c+1] = board[r][c];
 
             board[r][c+1] = totalTileNumber;
-            if(board[r][c] !== "x"){
-            board[r][c] = "x";
+            if(board[r][c] !== 0){
+            board[r][c] = 0;
         }
     }
 }
@@ -259,10 +260,10 @@ function moveTilesRight()
         for(var c=3; c >=0; c--)
         {
              
-            if(c !== 4  && board[r][c] !== "x" && board[r][c+1] === "x")
+            if(c !== 4  && board[r][c] !== 0 && board[r][c+1] === 0)
             {
                 board[r][c+1] = board[r][c];
-                board[r][c] = "x";
+                board[r][c] = 0;
                 moveTilesRight();
               //  moveTilesRight();
          //       console.log(c);
@@ -279,15 +280,15 @@ function combineTilesLeft(){
     {
         for(var c=0; c <=3; c++)
         {
-     if(c !== 0 && board[r][c] !== "x" && board[r][c-1] !== "x" && board[r][c] === board[r][c-1]){
+     if(c !== 0 && board[r][c] !== 0 && board[r][c-1] !== 0 && board[r][c] === board[r][c-1]){
             totalTileNumber = parseInt(board[r][c-1]) + parseInt(board[r][c]);
             console.log(totalTileNumber);
             score = score + parseInt(board[r][c-1]) + parseInt(board[r][c]);
             board[r][c-1] = board[r][c];
 
             board[r][c-1] = totalTileNumber;
-            if(board[r][c] !== "x"){
-            board[r][c] = "x";
+            if(board[r][c] !== 0){
+            board[r][c] = 0;
         }
 }
 }
@@ -304,10 +305,10 @@ function moveTilesLeft()
         for(var c=0; c <=3; c++)
         {
             
-            if(c !== 0  && board[r][c] !== "x" && board[r][c-1] === "x")
+            if(c !== 0  && board[r][c] !== 0 && board[r][c-1] === 0)
             {
                 board[r][c-1] = board[r][c];
-                board[r][c] = "x";
+                board[r][c] = 0;
                 moveTilesLeft();
            //     console.log(c);
                //console.log(board.length);
@@ -337,7 +338,7 @@ document.getElementById("demo").style.background = "#17202A";
 				document.getElementById(boardID).innerHTML = board[i][j];			}
 			//Change the different number tiles to different colors
 			switch(board[i][j]){
-				case "x":
+				case 0:
 				document.getElementById(boardID).style.background = "#CACFD2";
 				break;
 				case 2:
