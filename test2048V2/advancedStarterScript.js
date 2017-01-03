@@ -49,7 +49,7 @@ function addTile() {
 var x = Math.round(Math.random()*3);
     var y = Math.round(Math.random()*3);
     }
-board[x][y] = "2";
+board[x][y] = 2;
 
 }
     
@@ -88,6 +88,7 @@ document.onkeydown = function(e) {
         moveTilesUp();
         combineTilesUp();
         addTile();
+        checkColor();
         console.log("Pressed up");
         
     }
@@ -98,6 +99,7 @@ document.onkeydown = function(e) {
         moveTilesDown();
         combineTilesDown();
         addTile();
+        checkColor();
         console.log("Pressed down");
 
     }
@@ -106,6 +108,7 @@ document.onkeydown = function(e) {
        moveTilesLeft();
        combineTilesLeft();
        addTile();
+       checkColor();
        console.log("Pressed left");
     }
     else if (e.keyCode == RIGHT_ARROW) {
@@ -113,6 +116,7 @@ document.onkeydown = function(e) {
        moveTilesRight();
        combineTilesRight();
        addTile();
+       checkColor();
        console.log("Pressed right");
 
     //   console.log(board.length);
@@ -190,6 +194,10 @@ function combineTilesDown(){
             totalTileNumber = parseInt(board[r+1][c]) + parseInt(board[r][c]);
             console.log(totalTileNumber);
             score = score + parseInt(board[r+1][c]) + parseInt(board[r][c]);
+             if(parseInt(board[r+1][c]) + parseInt(board[r][c]) === 2048 && foreverContinue == false){
+                cleared = true;
+                
+            }
             board[r+1][c] = board[r][c];
 
             board[r+1][c] = totalTileNumber;
@@ -238,6 +246,10 @@ function moveTilesDown()
             totalTileNumber = parseInt(board[r][c+1]) + parseInt(board[r][c]);
             console.log(totalTileNumber);
             score = score + parseInt(board[r][c+1]) + parseInt(board[r][c]);
+            if(parseInt(board[r][c+1]) + parseInt(board[r][c]) === 2048 && foreverContinue == false){
+                cleared = true;
+                
+            }
             board[r][c+1] = board[r][c];
 
             board[r][c+1] = totalTileNumber;
@@ -284,6 +296,10 @@ function combineTilesLeft(){
             totalTileNumber = parseInt(board[r][c-1]) + parseInt(board[r][c]);
             console.log(totalTileNumber);
             score = score + parseInt(board[r][c-1]) + parseInt(board[r][c]);
+             if(parseInt(board[r][c-1]) + parseInt(board[r][c]) === 2048 && foreverContinue == false){
+                cleared = true;
+                
+            }
             board[r][c-1] = board[r][c];
 
             board[r][c-1] = totalTileNumber;
@@ -328,9 +344,14 @@ function printBoard(){
 console.log(score);
 document.getElementById("demo").innerHTML = "Score: " + score;
 document.getElementById("demo").style.background = "#17202A";
+checkColor();
 //document.getElementById('score').innerHTML = "Score: " + score;
 //text(score,10,10);
-    for(var i = 0; i < 4; i++){
+   
+}
+function checkColor(){
+
+     for(var i = 0; i < 4; i++){
         for(var j = 0; j < 4; j++){
             var boardID = "r"+i+"c"+j;
             //if the tile is not zero, put it on the board 
@@ -340,9 +361,10 @@ document.getElementById("demo").style.background = "#17202A";
 
             //Change the different number tiles to different colors
             switch(board[i][j]){
-                /*case 0:
+                case 0:
                 document.getElementById(boardID).style.background = "#CACFD2";
-                break;*/
+                break;
+
                 case 2:
                     document.getElementById(boardID).style.background = "#f0e5da";
                     break;//similar to an else if. Makes sure none of the other cases executes if this one does
