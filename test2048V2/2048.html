@@ -8,18 +8,20 @@
 
 	</head>
 	<body>
+	<button onclick="findSize()">Click to Choose Game Size</button>
+
+
 	
-
-<input type="text" size="40" onkeypress="findSize(event)">
-
 	<p id="demo"></p>
 	<p id="clear"></p>
 	<script>
-	function findSize(event){
-		var x = event.keyCode;              
-    var y = String.fromCharCode(x);
-    console.log(y);
+	function findSize(){
+		var number = prompt("Please enter a number to choose the size of the game", "4");
+		if (number != null) {
+        console.log(number);
+    }
 	}
+
 //	document.write(demo);
 //document.getElementById(score).innerHTML = printedScore;
 </script>

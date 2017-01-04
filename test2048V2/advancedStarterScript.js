@@ -14,6 +14,7 @@ var score = 0;
 var cleared = false;
 var foreverContinue = false;
 var fieldSize = 0;
+var meer = 0;
 
 /*var part1 = false;
 var part2 = false;
@@ -30,14 +31,15 @@ var part8 = false;*/
     console.log("Loaded webpage"); //how you do print statements in javascript
 });*/
 $(document).ready(function(){
-    alert("Input number in field for size of 2048 game.");
+ //   alert("Input number in field for size of 2048 game.");
     setUpBoard();
     printBoard();
     console.log("Loaded webpage"); //how you do print statements in javascript
 });
 function setUpBoard(){
 //alert("Input number in field for size of 2048 game.");
-
+//meer = document.getElementById('test').value;
+//console.log(meer);
     /*var x = event.keyCode;              
     var y = String.fromCharCode(x);
     console.log(x);*/
