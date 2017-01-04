@@ -13,6 +13,14 @@ var totalTileNumber;
 var score = 0;
 var cleared = false;
 var foreverContinue = false;
+/*var part1 = false;
+var part2 = false;
+var part3 = false;
+var part4 = false;
+var part5 = false;
+var part6 = false;
+var part7 = false;
+var part8 = false;*/
 //As soon as webpage loads run these two functions
 /*$(document).ready(function(){
     setUpBoard();
@@ -138,6 +146,9 @@ function combineTilesUp()
     {
         for(var c=0; c<board[r].length; c++)
         {
+         /*   if(board[r][c] !== board[r-1][c]){
+
+            }*/
    if(r !== 0 && board[r][c] !== 0 && board[r-1][c] !== 0 && board[r][c] === board[r-1][c]){
             totalTileNumber = parseInt(board[r-1][c]) + parseInt(board[r][c]);
             score = score + parseInt(board[r-1][c]) + parseInt(board[r][c]);
@@ -168,11 +179,12 @@ function moveTilesUp()
     {
         for(var c=0; c<board[r].length; c++)
         {
-           
+            
             if(r !== 0  && board[r][c] !== 0 && board[r-1][c] === 0)
             {
                 board[r-1][c] = board[r][c];
                 board[r][c] = 0;
+
                 moveTilesUp();
            //     console.log(r);
                //console.log(board.length);
@@ -355,7 +367,7 @@ function checkColor(){
         for(var j = 0; j < 4; j++){
             var boardID = "r"+i+"c"+j;
             //if the tile is not zero, put it on the board 
-            if(board[i][j] != "x"){
+           if(board[i][j] !== "0"){
                 
                 document.getElementById(boardID).innerHTML = board[i][j];           }
 
