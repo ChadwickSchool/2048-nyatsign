@@ -1,26 +1,22 @@
 <html>
 	<head>
+	
 		<title> 2048 </title>
 		<link rel='stylesheet' href='stylesheet.css'>
 		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 
 		<script src='advancedStarterScript.js'></script>
-
 	</head>
 	<body>
-	<button onclick="findSize()">Click to Choose Game Size</button>
-
-
-	
 	<p id="demo"></p>
+	<style>
+#demo {
+  
+    color: black;
+}
+</style>
 	<p id="clear"></p>
 	<script>
-	function findSize(){
-		var number = prompt("Please enter a number to choose the size of the game", "4");
-		if (number != null) {
-        console.log(number);
-    }
-	}
 
 //	document.write(demo);
 //document.getElementById(score).innerHTML = printedScore;

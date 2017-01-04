@@ -1,6 +1,6 @@
 
 //2D array initialized with sample values. To get a blank board initialize all the values to zero
-var board = [[2,4,8,16],[32,64,128,512],[1024,0,0,0],[0,0,0,0]];
+//var board = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
 var board = [];
 var UP_ARROW = 38;
 var DOWN_ARROW = 40;
@@ -13,8 +13,8 @@ var totalTileNumber;
 var score = 0;
 var cleared = false;
 var foreverContinue = false;
-var fieldSize = 0;
-var meer = 0;
+var boardSize = 0;
+
 
 /*var part1 = false;
 var part2 = false;
@@ -32,10 +32,20 @@ var part8 = false;*/
 });*/
 $(document).ready(function(){
  //   alert("Input number in field for size of 2048 game.");
+ findSize();
     setUpBoard();
     printBoard();
     console.log("Loaded webpage"); //how you do print statements in javascript
 });
+function findSize(){
+    console.log("DIFFERENT");
+        var number = prompt("Please enter a number to choose the size of the game", "4");
+        if (number != null) {
+        console.log(number);
+       // for(i = 0; i < boardSI)
+     //   board = number * 
+    }
+    }
 function setUpBoard(){
 //alert("Input number in field for size of 2048 game.");
 //meer = document.getElementById('test').value;
@@ -45,9 +55,11 @@ function setUpBoard(){
     console.log(x);*/
 //fieldSize = event.which || event.keyCode;
     // initialize board to have no values
-    for(var i=0-fieldSize; i<4; i++){
+
+    for(var i=0; i<4; i++){
+        console.log("SAME");
         var innerboard = [];
-        for(var j=0-fieldSize; j<4; j++){
+        for(var j=0; j<4; j++){
             innerboard.push(0);
         }
         board.push(innerboard);
@@ -72,7 +84,7 @@ board[x][y] = 2;
 }
     
 
-function printBoard(){
+/*function printBoard(){
     var board = '<br/>' + "*--------------*" + '<br/>';
     for(var i=0; i<board.length; i++){
         board += "|   ";
@@ -86,7 +98,7 @@ function printBoard(){
     
     //console.log(board);
     document.getElementById("container").innerHTML = board;
-}
+}*/
 
 
 //function gets called anytime  a key is pressed 
@@ -365,7 +377,7 @@ function moveTilesLeft()
 function printBoard(){
 console.log(score);
 document.getElementById("demo").innerHTML = "Score: " + score;
-document.getElementById("demo").style.background = "#17202A";
+//document.getElementById("demo").style.background = "#17202A";
 checkColor();
 //document.getElementById('score').innerHTML = "Score: " + score;
 //text(score,10,10);
@@ -377,7 +389,7 @@ function checkColor(){
         for(var j = 0; j < 4; j++){
             var boardID = "r"+i+"c"+j;
             //if the tile is not zero, put it on the board 
-           if(board[i][j] !== "0"){
+           if(board[i][j] !== "0" ){
                 
                 document.getElementById(boardID).innerHTML = board[i][j];           }
 
