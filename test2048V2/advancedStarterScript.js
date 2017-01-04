@@ -13,6 +13,8 @@ var totalTileNumber;
 var score = 0;
 var cleared = false;
 var foreverContinue = false;
+var fieldSize = 0;
+
 /*var part1 = false;
 var part2 = false;
 var part3 = false;
@@ -28,16 +30,22 @@ var part8 = false;*/
     console.log("Loaded webpage"); //how you do print statements in javascript
 });*/
 $(document).ready(function(){
+    alert("Input number in field for size of 2048 game.");
     setUpBoard();
     printBoard();
     console.log("Loaded webpage"); //how you do print statements in javascript
 });
 function setUpBoard(){
+//alert("Input number in field for size of 2048 game.");
 
+    /*var x = event.keyCode;              
+    var y = String.fromCharCode(x);
+    console.log(x);*/
+//fieldSize = event.which || event.keyCode;
     // initialize board to have no values
-    for(var i=0; i<4; i++){
+    for(var i=0-fieldSize; i<4; i++){
         var innerboard = [];
-        for(var j=0; j<4; j++){
+        for(var j=0-fieldSize; j<4; j++){
             innerboard.push(0);
         }
         board.push(innerboard);
