@@ -14,7 +14,7 @@ var score = 0;
 var cleared = false;
 var foreverContinue = false;
 var boardSize = 0;
-
+var rowSize;
 
 /*var part1 = false;
 var part2 = false;
@@ -34,17 +34,32 @@ $(document).ready(function(){
  //   alert("Input number in field for size of 2048 game.");
  findSize();
     setUpBoard();
+
     printBoard();
     console.log("Loaded webpage"); //how you do print statements in javascript
 });
 function findSize(){
-    console.log("DIFFERENT");
+ //   console.log("DIFFERENT");
         var number = prompt("Please enter a number to choose the size of the game", "4");
         if (number != null) {
         console.log(number);
+         rowSize = number - 4;
+        for(i = 0; i< number - 4; i++){
+          // console.log("same")
+        var rowNumber = i+4;
+           document.getElementById("addRow").innerHTML +=   '<div class="grid-row">\
+                  <div class="grid-cell" id = "r' + rowNumber +'c0"></div>\
+                  <div class="grid-cell" id = "r' + rowNumber + 'c1"></div>\
+                  <div class="grid-cell" id = "r' + rowNumber + 'c2"></div>\
+                  <div class="grid-cell" id = "r' + rowNumber + 'c3"></div>\
+                </div> '
+        }
+           
+    }
+
        // for(i = 0; i < boardSI)
      //   board = number * 
-    }
+   // }
     }
 function setUpBoard(){
 //alert("Input number in field for size of 2048 game.");
@@ -56,10 +71,10 @@ function setUpBoard(){
 //fieldSize = event.which || event.keyCode;
     // initialize board to have no values
 
-    for(var i=0; i<4; i++){
-        console.log("SAME");
+    for(var i=0; i<4 ; i++){
+    //    console.log("SAME");
         var innerboard = [];
-        for(var j=0; j<4; j++){
+        for(var j=0; j<4 ; j++){
             innerboard.push(0);
         }
         board.push(innerboard);
