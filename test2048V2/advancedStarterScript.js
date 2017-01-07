@@ -45,6 +45,17 @@ function findSize(){
         if (number != null) {
         console.log(number);
          rowSize = number - 4;
+         for(i = 0; i< number - 4; i++){
+        //    var rowNumero = i+3;
+         containerSize += 106.25;
+          //  var myElement = document.querySelector("#game-container");
+          //document.getElementById("game-container").width = 1000;
+         document.getElementById("gameContainer").style.width = containerSize + "px";
+             
+
+             //106.25
+
+        }
         for(i = 0; i< number - 4; i++){
           // console.log("same")
         var rowNumber = i+4;
@@ -54,18 +65,10 @@ function findSize(){
                   <div class="grid-cell" id = "r' + rowNumber + 'c2"></div>\
                   <div class="grid-cell" id = "r' + rowNumber + 'c3"></div>\
                 </div> '
+                var rowNumero = i+3;
+                document.getElementById("addRow1").innerHTML += '<div class="grid-cell" id = "r0c' + rowNumero + '"></div>'
         }
-        for(i = 0; i< number - 4; i++){
-            var rowNumero = i+3;
-         containerSize += 106.25;
-            var myElement = document.querySelector("#game-container");
-          //document.getElementById("game-container").width = 1000;
-          myElement.style.width = containerSize + "px";
-             document.getElementById("addRow1").innerHTML += '<div class="grid-cell" id = "r0c' + rowNumero + '"></div>'
-
-             //106.25
-
-        }
+        
            
     }
 
