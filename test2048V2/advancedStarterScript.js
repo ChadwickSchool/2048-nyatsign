@@ -15,6 +15,7 @@ var cleared = false;
 var foreverContinue = false;
 var boardSize = 0;
 var rowSize;
+var containerSize = 500;
 
 /*var part1 = false;
 var part2 = false;
@@ -53,6 +54,17 @@ function findSize(){
                   <div class="grid-cell" id = "r' + rowNumber + 'c2"></div>\
                   <div class="grid-cell" id = "r' + rowNumber + 'c3"></div>\
                 </div> '
+        }
+        for(i = 0; i< number - 4; i++){
+            var rowNumero = i+3;
+         containerSize += 106.25;
+            var myElement = document.querySelector("#game-container");
+          //document.getElementById("game-container").width = 1000;
+          myElement.style.width = containerSize + "px";
+             document.getElementById("addRow1").innerHTML += '<div class="grid-cell" id = "r0c' + rowNumero + '"></div>'
+
+             //106.25
+
         }
            
     }
