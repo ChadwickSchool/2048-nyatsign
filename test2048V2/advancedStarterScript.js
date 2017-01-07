@@ -34,6 +34,7 @@ var part8 = false;*/
 $(document).ready(function(){
  //   alert("Input number in field for size of 2048 game.");
  findSize();
+ changeSize();
     setUpBoard();
 
     printBoard();
@@ -56,7 +57,13 @@ function findSize(){
              //106.25
 
         }
-        for(i = 0; i< number - 4; i++){
+       
+        
+           
+    }
+}
+    function changeSize(){
+         for(i = 0; i< rowSize; i++){
           // console.log("same")
         var rowNumber = i+4;
            document.getElementById("addRow").innerHTML +=   '<div class="grid-row">\
@@ -65,17 +72,15 @@ function findSize(){
                   <div class="grid-cell" id = "r' + rowNumber + 'c2"></div>\
                   <div class="grid-cell" id = "r' + rowNumber + 'c3"></div>\
                 </div> '
-                var rowNumero = i+3;
+                var rowNumero = i+4;
                 document.getElementById("addRow1").innerHTML += '<div class="grid-cell" id = "r0c' + rowNumero + '"></div>'
         }
-        
-           
     }
 
        // for(i = 0; i < boardSI)
      //   board = number * 
    // }
-    }
+    
 function setUpBoard(){
 //alert("Input number in field for size of 2048 game.");
 //meer = document.getElementById('test').value;
